@@ -31,6 +31,9 @@ const addTransaction = () => {
   formdata.type = '';
 };
 
+const sdwdd(wdq); {
+  dw <
+} a,>: dwqd
 
 
 
