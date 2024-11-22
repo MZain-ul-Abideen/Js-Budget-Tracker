@@ -1,0 +1,8 @@
+{
+  "env": {
+    "jest/globals": true,
+    "browser": true
+  },
+  "plugins": ["jest"],
+  "extends": ["eslint:recommended", "plugin:jest/recommended"]
+}

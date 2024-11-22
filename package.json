@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --fix",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "test": "jest"
   },
   "dependencies": {
     "loglevel": "^1.9.2",
@@ -20,16 +21,51 @@
     "@eslint/js": "^9.15.0",
     "@vitejs/plugin-vue": "^5.1.4",
     "@vue/eslint-config-prettier": "^10.1.0",
+    "@vue/test-utils": "^2.4.6",
     "eslint": "^9.15.0",
+    "eslint-plugin-jest": "^28.9.0",
     "eslint-plugin-vue": "^9.31.0",
     "globals": "^15.12.0",
     "husky": "^9.1.7",
+    "jest": "^26.6.3",
     "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
     "vite": "^5.4.10",
-    "vite-plugin-vue-devtools": "^7.5.4"
+    "vite-plugin-vue-devtools": "^7.5.4",
+    "vue-jest": "^5.0.0-alpha.10"
   },
   "lint-staged": {
     "src/**/*.{js,vue}": "eslint"
-  }
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "vue"
+    ],
+    "transform": {
+      "^.+\\.vue$": "vue-jest",
+      "^.+\\.js$": "babel-jest"
+    }
+  },
+  "eslintConfig": {
+    "env": {
+      "jest/globals": true,
+      "browser": true
+    },
+    "plugins": [
+      "jest"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:jest/recommended"
+    ]
+  },
+  "description": "A simple and intuitive budget tracker application built with Vue.js. This app allows users to manage their finances by tracking income and expenses, and calculating the remaining balance.",
+  "main": "eslint.config.js",
+  "directories": {
+    "test": "tests"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
