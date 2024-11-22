@@ -2,8 +2,10 @@
 import { reactive } from 'vue';
 import logger from "../utils/logger.js";
 
-
-// Reactive state for form data and history
+/**
+ * Reactive state for form data and transaction history.
+ * @type {Object}
+ */
 const formdata = reactive({
   description: '',
   amount: 0,
@@ -11,41 +13,53 @@ const formdata = reactive({
   balance: 0,
 });
 
+/**
+ * Transaction history to track all added transactions.
+ * @type {Array}
+ */
 const history = reactive([]);
 
-// Method for adding transaction and logging it
+/**
+ * Method to add a new transaction and update balance.
+ * It updates the balance based on the type of transaction (income/expense)
+ * and adds the transaction to the history.
+ */
 const addTransaction = () => {
   const { description, amount, type } = formdata;
 
+  // Update balance based on transaction type
   if (type === 'income') {
     formdata.balance += amount;
   } else {
     formdata.balance -= amount;
   }
 
+  // Add transaction to history
   history.push({ description, amount, type, balance: formdata.balance });
 
-  // Reset form data
+  // Reset form data after adding the transaction
   formdata.description = '';
   formdata.amount = 0;
   formdata.type = '';
 
-  // Log the expense action
+  // Log the expense action (for demonstration purposes)
   addExpense();
 };
 
-// Method for logging expense
+/**
+ * Logs an expense action and simulates an error during expense addition.
+ * This function catches and logs the error.
+ */
 const addExpense = () => {
   logger.info("User clicked Add Expense button.");
   try {
-    // Simulate adding an expense
+    // Simulate adding an expense (will throw an error)
     throw new Error("Failed to save expense.");
   } catch (error) {
     logger.error(`Error occurred: ${error.message}`);
   }
 };
 </script>
-
 
 <template>
   <div id="app" class="app">
